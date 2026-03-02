@@ -10,24 +10,24 @@ export default function Header() {
           alt="HSBC" 
           className="w-10 h-10 object-contain"
         />
-        <span className="text-xl text-gray-800">One Wealth</span>
+        <span className="text-xl md:text-2xl lg:text-3xl text-gray-800">One Wealth</span>
       </div>
       
       <div className="flex items-center gap-3">
         <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <Phone size={18} />
+          <Phone size={18} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
         </button>
         <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <Mail size={18} />
+          <Mail size={18} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
         </button>
         <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <MessageCircle size={18} />
+          <MessageCircle size={18} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
         </button>
         <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <Video size={18} />
+          <Video size={18} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
         </button>
         <button className="ml-2 w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-700 rounded-full border border-gray-300 hover:bg-gray-300 transition-colors">
-          <User size={20} />
+          <User size={20} className="md:w-6 md:h-6 lg:w-7 lg:h-7" />
         </button>
       </div>
     </header>

@@ -10,7 +10,7 @@ const navItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-24 bg-gray-50 border-r border-gray-200 flex flex-col h-[calc(100vh-64px)] sticky top-16">
+    <aside className="w-24 md:w-28 lg:w-32 bg-gray-50 border-r border-gray-200 flex flex-col h-[calc(100vh-64px)] sticky top-16">
       <div className="flex-1 py-4">
         {navItems.map((item) => (
           <button
@@ -24,8 +24,8 @@ export default function Sidebar() {
             {item.active && (
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-hsbc-red" />
             )}
-            <item.icon size={24} className="mb-2" />
-            <span className="text-[10px] leading-tight">
+            <item.icon size={24} className="mb-2 md:w-7 md:h-7 lg:w-8 lg:h-8" />
+            <span className="text-[10px] md:text-xs lg:text-sm leading-tight">
               {item.label}
             </span>
           </button>
@@ -34,8 +34,8 @@ export default function Sidebar() {
       
       <div className="pb-8">
         <button className="w-full flex flex-col items-center py-4 text-gray-400 hover:text-gray-600 transition-colors">
-          <Power size={20} className="mb-1" />
-          <span className="text-[10px]">Off</span>
+          <Power size={20} className="mb-1 md:w-6 md:h-6 lg:w-7 lg:h-7" />
+          <span className="text-[10px] md:text-xs lg:text-sm">Off</span>
         </button>
       </div>
     </aside>
