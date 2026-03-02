@@ -386,7 +386,7 @@ export default function MeetingCalendar() {
     <div className="h-full flex flex-col overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between mb-4 shrink-0">
-        <h2 className="text-xl md:text-2xl text-gray-800">My Appointments</h2>
+        <h2 className="text-lg md:text-xl text-gray-800">My Appointments</h2>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
@@ -394,7 +394,7 @@ export default function MeetingCalendar() {
           >
             <ChevronLeft size={20} className="text-gray-600" />
           </button>
-          <span className="text-lg md:text-xl lg:text-2xl text-gray-800 min-w-[160px] text-center">
+          <span className="text-base md:text-lg lg:text-xl text-gray-800 min-w-[140px] text-center">
             {format(currentMonth, 'MMMM yyyy')}
           </span>
           <button
@@ -413,7 +413,7 @@ export default function MeetingCalendar() {
           {weekDays.map((weekDay) => (
             <div
               key={weekDay}
-              className="bg-gray-50 py-3 text-center text-sm md:text-base lg:text-lg text-gray-600"
+              className="bg-gray-50 py-3 text-center text-xs md:text-sm lg:text-base text-gray-600"
             >
               {weekDay}
             </div>
@@ -438,7 +438,7 @@ export default function MeetingCalendar() {
                 }`}
               >
                 <div
-                  className={`text-sm md:text-base lg:text-lg mb-1 w-7 h-7 md:w-9 md:h-9 lg:w-10 lg:h-10 flex items-center justify-center ${
+                  className={`text-xs md:text-sm lg:text-base mb-1 w-6 h-6 md:w-8 md:h-8 lg:w-9 lg:h-9 flex items-center justify-center ${
                     isToday
                       ? 'bg-hsbc-red text-white'
                       : 'text-gray-700'
@@ -451,7 +451,7 @@ export default function MeetingCalendar() {
                     <button
                       key={meeting.id}
                       onClick={(e) => handleMeetingClick(meeting, e)}
-                      className="w-full text-left px-2 py-1 text-xs md:text-sm lg:text-base bg-hsbc-red/10 text-hsbc-red hover:bg-hsbc-red hover:text-white transition-colors truncate cursor-pointer"
+                      className="w-full text-left px-2 py-1 text-[10px] md:text-xs lg:text-sm bg-hsbc-red/10 text-hsbc-red hover:bg-hsbc-red hover:text-white transition-colors truncate cursor-pointer"
                     >
                       {meeting.time} {meeting.topic}
                     </button>
@@ -480,12 +480,12 @@ export default function MeetingCalendar() {
           >
             {/* Meeting Info Header */}
             <div className="p-4 border-b border-gray-200 bg-gray-50 shrink-0">
-              <div className="space-y-2 text-sm md:text-base">
+              <div className="space-y-2 text-xs md:text-sm">
                 {/* Topic - First */}
                 <div className="flex items-start gap-2">
                   <FileText size={16} className="text-hsbc-red mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-gray-500 text-xs md:text-sm">Topic</p>
+                    <p className="text-gray-500 text-[10px] md:text-xs">Topic</p>
                     <p className="text-gray-800 font-medium">{selectedMeeting.topic}</p>
                   </div>
                 </div>
@@ -493,7 +493,7 @@ export default function MeetingCalendar() {
                 <div className="flex items-start gap-2">
                   <Calendar size={14} className="text-gray-400 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-gray-500 text-xs md:text-sm">Date & Time</p>
+                    <p className="text-gray-500 text-[10px] md:text-xs">Date & Time</p>
                     <p className="text-gray-700">{format(selectedMeeting.date, 'MMMM dd, yyyy')} at {selectedMeeting.time}</p>
                   </div>
                 </div>
@@ -501,7 +501,7 @@ export default function MeetingCalendar() {
                 <div className="flex items-start gap-2">
                   <User size={14} className="text-gray-400 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-gray-500 text-xs md:text-sm">Client Name</p>
+                    <p className="text-gray-500 text-[10px] md:text-xs">Client Name</p>
                     <p className="text-gray-700">{selectedMeeting.clientName}</p>
                   </div>
                 </div>
@@ -509,7 +509,7 @@ export default function MeetingCalendar() {
                 <div className="flex items-start gap-2">
                   <MapPin size={14} className="text-gray-400 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-gray-500 text-xs md:text-sm">Location</p>
+                    <p className="text-gray-500 text-[10px] md:text-xs">Location</p>
                     <p className="text-gray-700">{selectedMeeting.location}</p>
                   </div>
                 </div>
@@ -524,8 +524,8 @@ export default function MeetingCalendar() {
               >
                 <div className="flex items-center gap-2">
                   <MessageSquare size={16} className="text-hsbc-red" />
-                  <span className="text-sm md:text-base font-medium text-gray-700">AI Chat History</span>
-                  <span className="text-xs md:text-sm text-gray-400">
+                  <span className="text-xs md:text-sm font-medium text-gray-700">AI Chat History</span>
+                  <span className="text-[10px] md:text-xs text-gray-400">
                     ({selectedMeeting.chatHistory.filter(m => m.role === 'client').length} messages)
                   </span>
                 </div>
@@ -558,16 +558,16 @@ export default function MeetingCalendar() {
                       {/* Message Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs md:text-sm lg:text-base font-medium text-gray-700">
+                          <span className="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">
                             {message.role === 'client' ? selectedMeeting.clientName : 'AI Advisor'}
                           </span>
                           {message.timestamp && (
-                            <span className="text-xs md:text-sm lg:text-base text-gray-400">{message.timestamp}</span>
+                            <span className="text-[10px] md:text-xs lg:text-sm text-gray-400">{message.timestamp}</span>
                           )}
                         </div>
 
                         <div
-                          className={`p-2.5 text-xs md:text-sm lg:text-base ${
+                          className={`p-2.5 text-[10px] md:text-xs lg:text-sm ${
                             message.role === 'client'
                               ? 'bg-white border border-gray-200'
                               : 'bg-white border border-gray-200'
@@ -586,7 +586,7 @@ export default function MeetingCalendar() {
                               </div>
                               <button
                                 onClick={() => toggleChatMessage(message.id)}
-                                className="mt-2 text-hsbc-red text-xs md:text-sm hover:underline"
+                                className="mt-2 text-hsbc-red text-[10px] md:text-xs hover:underline"
                               >
                                 {expandedChatMessages.has(message.id) ? 'Show less' : 'Show more'}
                               </button>
