@@ -386,7 +386,7 @@ export default function MeetingCalendar() {
     <div className="h-full flex flex-col overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between mb-4 shrink-0">
-        <h2 className="text-lg md:text-xl text-gray-800">My Appointments</h2>
+        <h2 className="text-lg lg:text-xl text-gray-800">My Appointments</h2>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
@@ -394,7 +394,7 @@ export default function MeetingCalendar() {
           >
             <ChevronLeft size={20} className="text-gray-600" />
           </button>
-          <span className="text-base md:text-lg lg:text-xl text-gray-800 min-w-[140px] text-center">
+          <span className="text-base lg:text-xl text-gray-800 min-w-[140px] text-center">
             {format(currentMonth, 'MMMM yyyy')}
           </span>
           <button
