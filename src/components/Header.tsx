@@ -10,7 +10,7 @@ export default function Header() {
           alt="HSBC" 
           className="w-10 h-10 object-contain"
         />
-        <span className="text-lg md:text-2xl xl:text-3xl text-gray-800">One Wealth</span>
+        <span className="text-lg md:text-2xl text-gray-800">One Wealth</span>
       </div>
       
       <div className="flex items-center gap-3">
