@@ -10,7 +10,7 @@ const navItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-24 md:w-28 lg:w-32 bg-gray-50 border-r border-gray-200 flex flex-col h-[calc(100vh-64px)] sticky top-16">
+    <aside className="w-20 md:w-24 lg:w-28 bg-gray-50 border-r border-gray-200 flex flex-col h-[calc(100vh-64px)] sticky top-16">
       <div className="flex-1 py-4">
         {navItems.map((item) => (
           <button
