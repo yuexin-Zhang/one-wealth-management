@@ -26,14 +26,9 @@ export default function Header() {
         <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
           <Video size={18} />
         </button>
-        <div className="ml-2 w-10 h-10 rounded-full bg-gray-200 overflow-hidden border border-gray-300">
-          <img 
-            src="https://picsum.photos/seed/user/100/100" 
-            alt="User Profile" 
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-        </div>
+        <button className="ml-2 w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-700 rounded-full border border-gray-300 hover:bg-gray-300 transition-colors">
+          <User size={20} />
+        </button>
       </div>
     </header>
   );
