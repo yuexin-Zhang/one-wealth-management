@@ -558,16 +558,16 @@ export default function MeetingCalendar() {
                       {/* Message Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs md:text-sm font-medium text-gray-700">
+                          <span className="text-xs md:text-sm lg:text-base font-medium text-gray-700">
                             {message.role === 'client' ? selectedMeeting.clientName : 'AI Advisor'}
                           </span>
                           {message.timestamp && (
-                            <span className="text-xs md:text-sm text-gray-400">{message.timestamp}</span>
+                            <span className="text-xs md:text-sm lg:text-base text-gray-400">{message.timestamp}</span>
                           )}
                         </div>
 
                         <div
-                          className={`p-2.5 text-xs md:text-sm ${
+                          className={`p-2.5 text-xs md:text-sm lg:text-base ${
                             message.role === 'client'
                               ? 'bg-white border border-gray-200'
                               : 'bg-white border border-gray-200'
@@ -586,7 +586,7 @@ export default function MeetingCalendar() {
                               </div>
                               <button
                                 onClick={() => toggleChatMessage(message.id)}
-                                className="mt-2 text-hsbc-red text-xs hover:underline"
+                                className="mt-2 text-hsbc-red text-xs md:text-sm hover:underline"
                               >
                                 {expandedChatMessages.has(message.id) ? 'Show less' : 'Show more'}
                               </button>

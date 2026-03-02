@@ -1,4 +1,4 @@
-import { BarChart2, Users, LineChart, Target, Calendar, Power } from 'lucide-react';
+import { BarChart2, Users, LineChart, Target, Calendar, LogOut } from 'lucide-react';
 
 const navItems = [
   { id: 'scorecard', icon: BarChart2, label: 'Scorecard & Sales Planning' },
@@ -32,9 +32,9 @@ export default function Sidebar() {
         ))}
       </div>
       
-      <div className="pb-8">
+      <div className="pb-5">
         <button className="w-full flex flex-col items-center py-4 text-gray-400 hover:text-gray-600 transition-colors">
-          <Power size={20} className="mb-1 md:w-6 md:h-6 lg:w-7 lg:h-7" />
+          <LogOut size={20} className="mb-1 md:w-6 md:h-6 lg:w-7 lg:h-7" />
           <span className="text-[10px] md:text-xs lg:text-sm">Off</span>
         </button>
       </div>
