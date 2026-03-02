@@ -579,7 +579,7 @@ export default function MeetingCalendar() {
                                 className={
                                   expandedChatMessages.has(message.id)
                                     ? ''
-                                    : 'max-h-24 overflow-hidden'
+                                    : 'line-clamp-3'
                                 }
                               >
                                 {formatChatContent(message.content)}
