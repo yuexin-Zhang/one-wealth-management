@@ -24,8 +24,8 @@ export default function Sidebar() {
             {item.active && (
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-hsbc-red" />
             )}
-            <item.icon size={24} className="mb-2 md:w-7 md:h-7 lg:w-8 lg:h-8" />
-            <span className="text-[10px] md:text-xs lg:text-sm leading-tight">
+            <item.icon size={20} className="mb-1 md:w-6 md:h-6 lg:w-8 lg:h-8" />
+            <span className="text-[9px] md:text-[10px] lg:text-xs leading-tight">
               {item.label}
             </span>
           </button>
@@ -34,8 +34,8 @@ export default function Sidebar() {
       
       <div className="pb-5">
         <button className="w-full flex flex-col items-center py-4 text-gray-400 hover:text-gray-600 transition-colors">
-          <LogOut size={20} className="mb-1 md:w-6 md:h-6 lg:w-7 lg:h-7" />
-          <span className="text-[10px] md:text-xs lg:text-sm">Off</span>
+          <LogOut size={18} className="mb-1 md:w-5 md:h-5 lg:w-7 lg:h-7" />
+          <span className="text-[9px] md:text-[10px] lg:text-xs">Off</span>
         </button>
       </div>
     </aside>
