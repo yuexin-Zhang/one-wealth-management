@@ -6,10 +6,13 @@ import {
   startOfWeek,
   endOfWeek,
   addDays,
+  subDays,
   isSameMonth,
   isSameDay,
   addMonths,
   subMonths,
+  isPast,
+  startOfDay,
 } from 'date-fns';
 import { ChevronLeft, ChevronRight, Calendar, MapPin, User, FileText, MessageSquare, ChevronDown, ChevronUp, Bot } from 'lucide-react';
 
@@ -32,17 +35,66 @@ interface Meeting {
   chatHistory: ChatMessage[];
 }
 
-const meetings: Meeting[] = [
-  {
-    id: '1',
-    date: new Date(2026, 2, 3, 10, 0),
-    time: '10:00',
-    relationshipManager: 'Manager Li',
-    location: 'HSBC Shanghai Lujiazui Branch - Room 1502',
-    topic: 'General Investment Consultation',
-    clientName: 'John Anderson',
-    confirmed: true,
-    chatHistory: [
+// Helper function to get next Monday and Friday
+const getNextDayOfWeek = (date: Date, dayOfWeek: number) => {
+  const daysUntil = (dayOfWeek - date.getDay() + 7) % 7 || 7;
+  return addDays(date, daysUntil);
+};
+
+const getMeetings = (): Meeting[] => {
+  const today = new Date();
+  const tomorrow = addDays(today, 1);
+  const nextMonday = getNextDayOfWeek(today, 1);
+  const nextFriday = getNextDayOfWeek(today, 5);
+  const yesterday = subDays(today, 1);
+
+  return [
+    {
+      id: '0',
+      date: yesterday,
+      time: '14:30',
+      relationshipManager: 'Manager Li',
+      location: 'HSBC Shanghai Lujiazui Branch - Room 1502',
+      topic: 'Account Opening Follow-up',
+      clientName: 'Wei Zhang',
+      confirmed: true,
+      chatHistory: [
+        {
+          id: 'c1',
+          role: 'client',
+          content: 'I would like to check the status of my account opening.',
+          timestamp: format(yesterday, 'yyyy-MM-dd') + ' 10:00',
+        },
+        {
+          id: 'a1',
+          role: 'ai',
+          content: 'Hello Wei Zhang, I can see that your account opening application has been processed successfully. Your new account is now active and ready for use. You can start making deposits and investments. Is there anything specific you would like to know about your new account?',
+          timestamp: format(yesterday, 'yyyy-MM-dd') + ' 10:01',
+        },
+        {
+          id: 'c2',
+          role: 'client',
+          content: 'What documents do I need to bring for the follow-up meeting?',
+          timestamp: format(yesterday, 'yyyy-MM-dd') + ' 10:05',
+        },
+        {
+          id: 'a2',
+          role: 'ai',
+          content: 'For the account opening follow-up meeting, please bring the following documents:\n\n1. Valid passport or ID card\n2. Proof of address (utility bill or bank statement within last 3 months)\n3. Initial deposit if you plan to fund the account\n\nYour appointment with Manager Li is scheduled for yesterday at 2:30 PM at HSBC Shanghai Lujiazui Branch, Room 1502.',
+          timestamp: format(yesterday, 'yyyy-MM-dd') + ' 10:02',
+        },
+      ],
+    },
+    {
+      id: '1',
+      date: tomorrow,
+      time: '10:00',
+      relationshipManager: 'Manager Li',
+      location: 'HSBC Shanghai Lujiazui Branch - Room 1502',
+      topic: 'General Investment Consultation',
+      clientName: 'Wei Zhang',
+      confirmed: true,
+      chatHistory: [
       {
         id: 'c1',
         role: 'client',
@@ -188,7 +240,7 @@ Which time works best for you? (Or feel free to ask me anything else first)`,
   },
   {
     id: '2',
-    date: new Date(2026, 2, 5, 14, 0),
+    date: nextMonday,
     time: '14:00',
     relationshipManager: 'Manager Wang',
     location: 'HSBC Shanghai Lujiazui Branch - Room 1502',
@@ -200,7 +252,7 @@ Which time works best for you? (Or feel free to ask me anything else first)`,
         id: 'c1',
         role: 'client',
         content: 'I would like to review my portfolio performance.',
-        timestamp: '2026-03-03 11:20',
+        timestamp: format(nextMonday, 'yyyy-MM-dd') + ' 11:20',
       },
       {
         id: 'a1',
@@ -225,13 +277,13 @@ Based on your latest statement, your portfolio has shown solid performance with 
 - Maintained for liquidity
 
 Your portfolio remains well-diversified across asset classes. Would you like to schedule a detailed review with your RM to discuss any rebalancing opportunities?`,
-        timestamp: '2026-03-03 11:22',
+        timestamp: format(nextMonday, 'yyyy-MM-dd') + ' 11:22',
       },
     ],
   },
   {
     id: '3',
-    date: new Date(2026, 2, 10, 9, 30),
+    date: nextFriday,
     time: '09:30',
     relationshipManager: 'Manager Chen',
     location: 'HSBC Shanghai Lujiazui Branch - Room 1502',
@@ -243,7 +295,7 @@ Your portfolio remains well-diversified across asset classes. Would you like to 
         id: 'c1',
         role: 'client',
         content: 'I want to discuss my retirement planning options.',
-        timestamp: '2026-03-08 15:00',
+        timestamp: format(nextFriday, 'yyyy-MM-dd') + ' 15:00',
       },
       {
         id: 'a1',
@@ -264,11 +316,12 @@ In the meantime, here are some general retirement planning principles we typical
 - Regularly review and adjust your plan as circumstances change
 
 Based on your current portfolio value of CNY 3.2 million, you're in a good position to build a solid retirement foundation. Would you like to schedule a comprehensive retirement planning session with your RM?`,
-        timestamp: '2026-03-08 15:02',
+        timestamp: format(nextFriday, 'yyyy-MM-dd') + ' 15:02',
       },
     ],
   },
-];
+  ];
+};
 
 export default function MeetingCalendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -306,6 +359,8 @@ export default function MeetingCalendar() {
   }
 
   const numRows = Math.ceil(days.length / 7);
+
+  const meetings = getMeetings();
 
   const getMeetingsForDate = (date: Date) => {
     return meetings.filter((meeting) => isSameDay(meeting.date, date));
@@ -447,15 +502,22 @@ export default function MeetingCalendar() {
                   {format(date, 'd')}
                 </div>
                 <div className="space-y-1">
-                  {dayMeetings.map((meeting) => (
-                    <button
-                      key={meeting.id}
-                      onClick={(e) => handleMeetingClick(meeting, e)}
-                      className="w-full text-left px-2 py-1 text-[10px] md:text-xs lg:text-sm bg-hsbc-red/10 text-hsbc-red hover:bg-hsbc-red hover:text-white transition-colors truncate cursor-pointer"
-                    >
-                      {meeting.time} {meeting.topic}
-                    </button>
-                  ))}
+                  {dayMeetings.map((meeting) => {
+                    const isPastEvent = isPast(startOfDay(meeting.date));
+                    return (
+                      <button
+                        key={meeting.id}
+                        onClick={(e) => handleMeetingClick(meeting, e)}
+                        className={`w-full text-left px-2 py-1 text-[10px] md:text-xs lg:text-sm truncate cursor-pointer transition-colors ${
+                          isPastEvent
+                            ? 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800'
+                            : 'bg-hsbc-red/10 text-hsbc-red hover:bg-hsbc-red hover:text-white'
+                        }`}
+                      >
+                        {meeting.time} {meeting.topic}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             );

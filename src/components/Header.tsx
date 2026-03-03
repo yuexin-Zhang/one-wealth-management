@@ -14,20 +14,20 @@ export default function Header() {
       </div>
       
       <div className="flex items-center gap-3">
-        <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <Phone size={16} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
+        <button className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
+          <Phone size={14} />
         </button>
-        <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <Mail size={16} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
+        <button className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
+          <Mail size={14} />
         </button>
-        <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <MessageCircle size={16} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
+        <button className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
+          <MessageCircle size={14} />
         </button>
-        <button className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <Video size={16} className="md:w-5 md:h-5 lg:w-6 lg:h-6" />
+        <button className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
+          <Video size={14} />
         </button>
-        <button className="ml-2 w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-700 rounded-full border border-gray-300 hover:bg-gray-300 transition-colors">
-          <User size={18} className="md:w-6 md:h-6 lg:w-7 lg:h-7" />
+        <button className="ml-2 w-9 h-9 flex items-center justify-center bg-gray-200 text-gray-700 rounded-full border border-gray-300 hover:bg-gray-300 transition-colors">
+          <User size={16} />
         </button>
       </div>
     </header>
